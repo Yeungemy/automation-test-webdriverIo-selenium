@@ -1,4 +1,9 @@
 import type { Options } from '@wdio/types'
+import * as dotenv from 'dotenv';
+
+// Load the .env file
+dotenv.config();
+
 export const config: Options.Testrunner = {
     //
     // ====================
@@ -31,7 +36,7 @@ export const config: Options.Testrunner = {
     // will be called from there.
     //
     specs: [
-        './test/specs/**/*.ts'
+        './src/e2e/**/*.spec.ts'
     ],
     // Patterns to exclude.
     exclude: [

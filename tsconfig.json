@@ -24,7 +24,7 @@
         "noFallthroughCasesInSwitch": true
     },
     "include": [
-        "test",
+        "e2e",
         "wdio.conf.ts"
-    ]
+, "e2e"    ]
 }
