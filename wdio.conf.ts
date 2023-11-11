@@ -27,7 +27,7 @@ export const config: Options.Testrunner = {
     // of the configuration file being run.
     //
     // The specs are defined as an array of spec files (optionally using wildcards
-    // that will be expanded). The test for each spec file will be run in a separate
+    // that will be expanded: i.e. "./src/e2e/**/**.spec.ts"). The test for each spec file will be run in a separate
     // worker process. In order to have a group of spec files run in the same worker
     // process simply enclose them in an array within the specs array.
     //
