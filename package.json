@@ -1,5 +1,5 @@
 {
-  "name": "my-new-project",
+  "name": "webdriverio-project",
   "type": "module",
   "devDependencies": {
     "@wdio/cli": "^8.22.1",
