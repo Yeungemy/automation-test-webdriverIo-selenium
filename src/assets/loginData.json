@@ -10,5 +10,17 @@
     {
         "username": "tomsmith",
         "password": "SuperSecretPassword"
+    },
+    {
+        "username": " ",
+        "password": "SuperSecretPassword"
+    },
+    {
+        "username": "tomsmith",
+        "password": " "
+    },
+    {
+        "username": " ",
+        "password": " "
     }
 ]

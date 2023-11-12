@@ -41,4 +41,34 @@ describe("Login Function", () => {
         await expect(securePage.selectors.FLASH_ALERT).toHaveTextContaining(
             securePage.strings.INVALID_PASSWORD_ALERT);
     });
+
+    it("should be alerted with a proper message when logining without a username", async () => {
+        let username = loginData[3].username;
+        let password = loginData[3].password;
+        
+        await loginPage.login(username, password);
+        await expect(securePage.selectors.FLASH_ALERT).toBeExisting();
+        await expect(securePage.selectors.FLASH_ALERT).toHaveTextContaining(
+            securePage.strings.INVALID_USERNAME_ALERT);
+    });
+
+    it("should be alerted with a proper message when logining without a password", async () => {
+        let username = loginData[4].username;
+        let password = loginData[4].password;
+        
+        await loginPage.login(username, password);
+        await expect(securePage.selectors.FLASH_ALERT).toBeExisting();
+        await expect(securePage.selectors.FLASH_ALERT).toHaveTextContaining(
+            securePage.strings.INVALID_PASSWORD_ALERT);
+    });
+
+    it("should be alerted with a proper message when logining without a password or username", async () => {
+        let username = loginData[5].username;
+        let password = loginData[5].password;
+        
+        await loginPage.login(username, password);
+        await expect(securePage.selectors.FLASH_ALERT).toBeExisting();
+        await expect(securePage.selectors.FLASH_ALERT).toHaveTextContaining(
+            securePage.strings.INVALID_USERNAME_ALERT);
+    });
 });
