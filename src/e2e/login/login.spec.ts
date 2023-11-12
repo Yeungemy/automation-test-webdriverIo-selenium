@@ -12,8 +12,9 @@ describe("Login Function", () => {
     });
 
     it("Should be able to login with correct username and password", async () => {
-        let username = loginData[0].username;
-        let password = loginData[0].password;
+        const index = 0;
+        const username = loginData[index].username;
+        const password = loginData[index].password;
         
         await loginPage.login(username, password);
         await expect(securePage.selectors.FLASH_ALERT).toBeExisting();
@@ -23,8 +24,9 @@ describe("Login Function", () => {
     });
 
     it("should be alerted with a proper message when logining with an incorrect username", async () => {
-        let username = loginData[1].username;
-        let password = loginData[1].password;
+        const index = 1;
+        const username = loginData[index].username;
+        const password = loginData[index].password;
         
         await loginPage.login(username, password);
         await expect(securePage.selectors.FLASH_ALERT).toBeExisting();
@@ -33,8 +35,9 @@ describe("Login Function", () => {
     });
 
     it("should be alerted with a proper message when logining with an incorrect password", async () => {
-        let username = loginData[2].username;
-        let password = loginData[2].password;
+        const index = 2;
+        const username = loginData[index].username;
+        const password = loginData[index].password;
         
         await loginPage.login(username, password);
         await expect(securePage.selectors.FLASH_ALERT).toBeExisting();
@@ -43,8 +46,9 @@ describe("Login Function", () => {
     });
 
     it("should be alerted with a proper message when logining without a username", async () => {
-        let username = loginData[3].username;
-        let password = loginData[3].password;
+        const index = 3;
+        const username = loginData[index].username;
+        const password = loginData[index].password;
         
         await loginPage.login(username, password);
         await expect(securePage.selectors.FLASH_ALERT).toBeExisting();
@@ -53,8 +57,9 @@ describe("Login Function", () => {
     });
 
     it("should be alerted with a proper message when logining without a password", async () => {
-        let username = loginData[4].username;
-        let password = loginData[4].password;
+        const index = 4;
+        const username = loginData[index].username;
+        const password = loginData[index].password;
         
         await loginPage.login(username, password);
         await expect(securePage.selectors.FLASH_ALERT).toBeExisting();
@@ -63,8 +68,9 @@ describe("Login Function", () => {
     });
 
     it("should be alerted with a proper message when logining without a password or username", async () => {
-        let username = loginData[5].username;
-        let password = loginData[5].password;
+        const index = 5;
+        const username = loginData[index].username;
+        const password = loginData[index].password;
         
         await loginPage.login(username, password);
         await expect(securePage.selectors.FLASH_ALERT).toBeExisting();
