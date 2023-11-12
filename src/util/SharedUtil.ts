@@ -1,7 +1,7 @@
 import fs from 'fs';
 
 class SharedUtil{
-    readJSONFile(fileName: string){
+    readJSONFile (fileName: string){
         return JSON.parse(fs.readFileSync(`src/assets/${fileName}`, 'utf8'));
     }
 }

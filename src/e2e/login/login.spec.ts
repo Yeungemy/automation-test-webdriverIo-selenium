@@ -3,7 +3,7 @@ import { loginPage } from '../../pageobjects/login/login.page.js'
 import { securePage } from '../../pageobjects/login/secure.page.js'
 import { shared } from '../../util/SharedUtil.js';
 
-describe("Negative test on logining", () => {
+describe("Login Function", () => {
     const fileName = 'loginData.json';
     const loginData = shared.readJSONFile(fileName)
 
