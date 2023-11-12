@@ -11,23 +11,26 @@ describe("Login Function", () => {
         await loginPage.open();
     });
 
-    it("Should be able to login with correct username and password", async () => {
+    it("Should be able to login with correct username and password and then logout", async () => {
         const index = 0;
         const username = loginData[index].username;
         const password = loginData[index].password;
-        
+
         await loginPage.login(username, password);
         await expect(securePage.selectors.FLASH_ALERT).toBeExisting();
 
         await expect(securePage.selectors.FLASH_ALERT).toHaveTextContaining(
             securePage.strings.SUCCESSFUL_LOGIN_ALERT);
+
+        await securePage.logout();
+        await expect(securePage.selectors.LOGOUT_BTN).not.toBeExisting();
     });
 
     it("should be alerted with a proper message when logining with an incorrect username", async () => {
         const index = 1;
         const username = loginData[index].username;
         const password = loginData[index].password;
-        
+
         await loginPage.login(username, password);
         await expect(securePage.selectors.FLASH_ALERT).toBeExisting();
         await expect(securePage.selectors.FLASH_ALERT).toHaveTextContaining(
@@ -38,7 +41,7 @@ describe("Login Function", () => {
         const index = 2;
         const username = loginData[index].username;
         const password = loginData[index].password;
-        
+
         await loginPage.login(username, password);
         await expect(securePage.selectors.FLASH_ALERT).toBeExisting();
         await expect(securePage.selectors.FLASH_ALERT).toHaveTextContaining(
@@ -49,7 +52,7 @@ describe("Login Function", () => {
         const index = 3;
         const username = loginData[index].username;
         const password = loginData[index].password;
-        
+
         await loginPage.login(username, password);
         await expect(securePage.selectors.FLASH_ALERT).toBeExisting();
         await expect(securePage.selectors.FLASH_ALERT).toHaveTextContaining(
@@ -60,7 +63,7 @@ describe("Login Function", () => {
         const index = 4;
         const username = loginData[index].username;
         const password = loginData[index].password;
-        
+
         await loginPage.login(username, password);
         await expect(securePage.selectors.FLASH_ALERT).toBeExisting();
         await expect(securePage.selectors.FLASH_ALERT).toHaveTextContaining(
@@ -71,7 +74,7 @@ describe("Login Function", () => {
         const index = 5;
         const username = loginData[index].username;
         const password = loginData[index].password;
-        
+
         await loginPage.login(username, password);
         await expect(securePage.selectors.FLASH_ALERT).toBeExisting();
         await expect(securePage.selectors.FLASH_ALERT).toHaveTextContaining(

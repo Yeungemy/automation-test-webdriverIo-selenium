@@ -8,20 +8,25 @@ class SecurePage extends Page {
     /**
      * define selectors using getter methods
      */
-    public get  selectors() {        
+    public get selectors() {
         return {
-            FLASH_ALERT: $('#flash')
+            FLASH_ALERT: $('#flash'),
+            LOGOUT_BTN: $('a.button')
         };
     }
 
-    public get strings(){
+    public get strings() {
         return {
-          SUCCESSFUL_LOGIN_ALERT  : "You logged into a secure area!",
-          INVALID_PASSWORD_ALERT: "Your password is invalid!",
-          INVALID_USERNAME_ALERT: "Your username is invalid!"
+            SUCCESSFUL_LOGIN_ALERT: "You logged into a secure area!",
+            INVALID_PASSWORD_ALERT: "Your password is invalid!",
+            INVALID_USERNAME_ALERT: "Your username is invalid!"
         };
+    }
+
+    public async logout(){
+        await this.selectors.LOGOUT_BTN.click();
     }
 }
 
 const securePage = new SecurePage();
-export {securePage};
+export { securePage };
