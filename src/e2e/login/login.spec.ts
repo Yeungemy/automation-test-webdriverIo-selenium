@@ -1,31 +1,44 @@
 import { expect } from '@wdio/globals'
-import LoginPage from '../../pageobjects/login/login.page.js'
-import SecurePage from '../../pageobjects/login/secure.page.js'
-import fs from 'fs';
-const loginData = JSON.parse(fs.readFileSync('src/assets/loginData.json', 'utf8'));
+import { loginPage } from '../../pageobjects/login/login.page.js'
+import { securePage } from '../../pageobjects/login/secure.page.js'
+import { shared } from '../../util/SharedUtil.js';
 
 describe("Negative test on logining", () => {
-    console.log(Object.values(loginData));
-    let index: number = 0
+    const fileName = 'loginData.json';
+    const loginData = shared.readJSONFile(fileName)
 
-    loginData.forEach(({ username, password }) => {
-        index++;
-        it("should no be able to login with incorrect username or password", async () => {
-            console.log("userName: " + username);
-            console.log("password: " + password);
+    beforeEach(async () => {
+        await loginPage.open();
+    });
 
-            await LoginPage.open()
+    it("Should be able to login with correct username and password", async () => {
+        let username = loginData[0].username;
+        let password = loginData[0].password;
+        
+        await loginPage.login(username, password);
+        await expect(securePage.selectors.FLASH_ALERT).toBeExisting();
 
-            await LoginPage.login(username, password)
+        await expect(securePage.selectors.FLASH_ALERT).toHaveTextContaining(
+            securePage.strings.SUCCESSFUL_LOGIN_ALERT);
+    });
 
-            if (index < 1) {
-                await expect(SecurePage.flashAlert).toBeExisting()
-                await expect(SecurePage.flashAlert).toHaveTextContaining(
-                    'You logged into a secure area!')
-            }else{
-                console.log("failed for incorrect username or password");
-            }
-        });
+    it("should be alerted with a proper message when logining with an incorrect username", async () => {
+        let username = loginData[1].username;
+        let password = loginData[1].password;
+        
+        await loginPage.login(username, password);
+        await expect(securePage.selectors.FLASH_ALERT).toBeExisting();
+        await expect(securePage.selectors.FLASH_ALERT).toHaveTextContaining(
+            securePage.strings.INVALID_USERNAME_ALERT);
+    });
 
+    it("should be alerted with a proper message when logining with an incorrect password", async () => {
+        let username = loginData[2].username;
+        let password = loginData[2].password;
+        
+        await loginPage.login(username, password);
+        await expect(securePage.selectors.FLASH_ALERT).toBeExisting();
+        await expect(securePage.selectors.FLASH_ALERT).toHaveTextContaining(
+            securePage.strings.INVALID_PASSWORD_ALERT);
     });
 });

@@ -2,15 +2,26 @@ import { $ } from '@wdio/globals'
 import Page from '../page.js';
 
 /**
- * sub page containing specific selectors and methods for a specific page
+ * Secure page containing selectors and methods 
  */
 class SecurePage extends Page {
     /**
      * define selectors using getter methods
      */
-    public get flashAlert () {
-        return $('#flash');
+    public get  selectors() {        
+        return {
+            FLASH_ALERT: $('#flash')
+        };
+    }
+
+    public get strings(){
+        return {
+          SUCCESSFUL_LOGIN_ALERT  : "You logged into a secure area!",
+          INVALID_PASSWORD_ALERT: "Your password is invalid!",
+          INVALID_USERNAME_ALERT: "Your username is invalid!"
+        };
     }
 }
 
-export default new SecurePage();
+const securePage = new SecurePage();
+export {securePage};
