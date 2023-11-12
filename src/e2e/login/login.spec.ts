@@ -19,16 +19,19 @@ async function loginAndThenVerify(username: string, password: string, msg: strin
 describe("Login Function", () => {
     const fileName = 'loginData.json';
     const loginData = shared.readJSONFile(fileName);
+    let index = 0;
+    let username: string;
+    let password: string;
 
     beforeEach(async () => {
+        username = loginData[index].username;
+        password = loginData[index].password;
+        index++;
+
         await loginPage.open();
     });
 
     it("Should be able to login with correct username and password and then logout", async () => {
-        const index = 0;
-        const username = loginData[index].username;
-        const password = loginData[index].password;
-
         await loginAndThenVerify(username, password, securePage.strings.SUCCESSFUL_LOGIN_ALERT);
 
         await securePage.logout();
@@ -36,42 +39,22 @@ describe("Login Function", () => {
     });
 
     it("should be alerted with a proper message when logining with an incorrect username", async () => {
-        const index = 1;
-        const username = loginData[index].username;
-        const password = loginData[index].password;
-
         await loginAndThenVerify(username, password, securePage.strings.INVALID_USERNAME_ALERT);
     });
 
     it("should be alerted with a proper message when logining with an incorrect password", async () => {
-        const index = 2;
-        const username = loginData[index].username;
-        const password = loginData[index].password;
-
         await loginAndThenVerify(username, password, securePage.strings.INVALID_PASSWORD_ALERT);
     });
 
     it("should be alerted with a proper message when logining without a username", async () => {
-        const index = 3;
-        const username = loginData[index].username;
-        const password = loginData[index].password;
-
         await loginAndThenVerify(username, password, securePage.strings.INVALID_USERNAME_ALERT);
     });
 
     it("should be alerted with a proper message when logining without a password", async () => {
-        const index = 4;
-        const username = loginData[index].username;
-        const password = loginData[index].password;
-
         await loginAndThenVerify(username, password, securePage.strings.INVALID_PASSWORD_ALERT);
     });
 
     it("should be alerted with a proper message when logining without a password or username", async () => {
-        const index = 5;
-        const username = loginData[index].username;
-        const password = loginData[index].password;
-
         await loginAndThenVerify(username, password, securePage.strings.INVALID_USERNAME_ALERT);
     });
 });
