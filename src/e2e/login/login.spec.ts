@@ -3,9 +3,22 @@ import { loginPage } from '../../pageobjects/login/login.page.js'
 import { securePage } from '../../pageobjects/login/secure.page.js'
 import { shared } from '../../util/SharedUtil.js';
 
+/**
+ * Login and verify whety the message and the result are expected
+ * @param {string} username - user name
+ * @param {string} password - password
+ * @param {string} msg - the message is provided after the login process
+ */
+async function loginAndThenVerify(username: string, password: string, msg: string) {
+    await loginPage.login(username, password);
+    await expect(securePage.selectors.FLASH_ALERT).toBeExisting();
+
+    await expect(securePage.selectors.FLASH_ALERT).toHaveTextContaining(msg);
+}
+
 describe("Login Function", () => {
     const fileName = 'loginData.json';
-    const loginData = shared.readJSONFile(fileName)
+    const loginData = shared.readJSONFile(fileName);
 
     beforeEach(async () => {
         await loginPage.open();
@@ -16,11 +29,7 @@ describe("Login Function", () => {
         const username = loginData[index].username;
         const password = loginData[index].password;
 
-        await loginPage.login(username, password);
-        await expect(securePage.selectors.FLASH_ALERT).toBeExisting();
-
-        await expect(securePage.selectors.FLASH_ALERT).toHaveTextContaining(
-            securePage.strings.SUCCESSFUL_LOGIN_ALERT);
+        await loginAndThenVerify(username, password, securePage.strings.SUCCESSFUL_LOGIN_ALERT);
 
         await securePage.logout();
         await expect(securePage.selectors.LOGOUT_BTN).not.toBeExisting();
@@ -31,10 +40,7 @@ describe("Login Function", () => {
         const username = loginData[index].username;
         const password = loginData[index].password;
 
-        await loginPage.login(username, password);
-        await expect(securePage.selectors.FLASH_ALERT).toBeExisting();
-        await expect(securePage.selectors.FLASH_ALERT).toHaveTextContaining(
-            securePage.strings.INVALID_USERNAME_ALERT);
+        await loginAndThenVerify(username, password, securePage.strings.INVALID_USERNAME_ALERT);
     });
 
     it("should be alerted with a proper message when logining with an incorrect password", async () => {
@@ -42,10 +48,7 @@ describe("Login Function", () => {
         const username = loginData[index].username;
         const password = loginData[index].password;
 
-        await loginPage.login(username, password);
-        await expect(securePage.selectors.FLASH_ALERT).toBeExisting();
-        await expect(securePage.selectors.FLASH_ALERT).toHaveTextContaining(
-            securePage.strings.INVALID_PASSWORD_ALERT);
+        await loginAndThenVerify(username, password, securePage.strings.INVALID_PASSWORD_ALERT);
     });
 
     it("should be alerted with a proper message when logining without a username", async () => {
@@ -53,10 +56,7 @@ describe("Login Function", () => {
         const username = loginData[index].username;
         const password = loginData[index].password;
 
-        await loginPage.login(username, password);
-        await expect(securePage.selectors.FLASH_ALERT).toBeExisting();
-        await expect(securePage.selectors.FLASH_ALERT).toHaveTextContaining(
-            securePage.strings.INVALID_USERNAME_ALERT);
+        await loginAndThenVerify(username, password, securePage.strings.INVALID_USERNAME_ALERT);
     });
 
     it("should be alerted with a proper message when logining without a password", async () => {
@@ -64,10 +64,7 @@ describe("Login Function", () => {
         const username = loginData[index].username;
         const password = loginData[index].password;
 
-        await loginPage.login(username, password);
-        await expect(securePage.selectors.FLASH_ALERT).toBeExisting();
-        await expect(securePage.selectors.FLASH_ALERT).toHaveTextContaining(
-            securePage.strings.INVALID_PASSWORD_ALERT);
+        await loginAndThenVerify(username, password, securePage.strings.INVALID_PASSWORD_ALERT);
     });
 
     it("should be alerted with a proper message when logining without a password or username", async () => {
@@ -75,9 +72,6 @@ describe("Login Function", () => {
         const username = loginData[index].username;
         const password = loginData[index].password;
 
-        await loginPage.login(username, password);
-        await expect(securePage.selectors.FLASH_ALERT).toBeExisting();
-        await expect(securePage.selectors.FLASH_ALERT).toHaveTextContaining(
-            securePage.strings.INVALID_USERNAME_ALERT);
+        await loginAndThenVerify(username, password, securePage.strings.INVALID_USERNAME_ALERT);
     });
 });
