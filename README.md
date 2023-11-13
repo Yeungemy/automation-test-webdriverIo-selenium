@@ -8,3 +8,7 @@
     3. Typescript
     4. Selenium
     5. Mocha
+
+## TODO list
+    1. added other browser: chrome, edge, firefox
+    2. add launch application method with maximized window and cookies cleared

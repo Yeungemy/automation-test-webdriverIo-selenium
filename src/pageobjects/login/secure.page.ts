@@ -1,5 +1,6 @@
 import { $ } from '@wdio/globals'
 import Page from '../page.js';
+import { actions } from '../../util/ActionsUtil.js';
 
 /**
  * Secure page containing selectors and methods 
@@ -23,8 +24,8 @@ class SecurePage extends Page {
         };
     }
 
-    public async logout(){
-        await this.selectors.LOGOUT_BTN.click();
+    public async logout(): Promise<void> {
+        await actions.waitAndClick(this.selectors.LOGOUT_BTN);
     }
 }
 

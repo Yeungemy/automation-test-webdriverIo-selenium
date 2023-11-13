@@ -12,7 +12,6 @@ import { shared } from '../../util/SharedUtil.js';
 async function loginAndThenVerify(username: string, password: string, msg: string) {
     await loginPage.login(username, password);
     await expect(securePage.selectors.FLASH_ALERT).toBeExisting();
-
     await expect(securePage.selectors.FLASH_ALERT).toHaveTextContaining(msg);
 }
 
@@ -24,6 +23,7 @@ describe("Login Function", () => {
     let password: string;
 
     beforeEach(async () => {
+        // read login username and password from the login data JSON file by index
         username = loginData[index].username;
         password = loginData[index].password;
         index++;
