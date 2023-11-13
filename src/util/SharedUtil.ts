@@ -7,7 +7,7 @@ class SharedUtil{
     /**
      * Read JSON files within the assets folder
      * @param {string} fileName - the file name
-     * @returns 
+     * @returns {JSON } a JSON file
      */
     readJSONFile (fileName: string): Promise<JSON> {
         return JSON.parse(fs.readFileSync(`src/assets/${fileName}`, 'utf8'));

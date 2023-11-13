@@ -1,5 +1,5 @@
 class ActionsUtil{
-    public async waitAndClick(elem: ChainablePromiseElement): Promise<void> {
+    async waitAndClick(elem: ChainablePromiseElement): Promise<void> {
         await elem.waitForClickable();
         await elem.click();
     }

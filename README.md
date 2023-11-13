@@ -10,5 +10,8 @@
     5. Mocha
 
 ## TODO list
-    1. added other browser: chrome, edge, firefox
+    1. added other browser: chrome, edge, firefox, and run a cross browser test
     2. add launch application method with maximized window and cookies cleared
+    3. add tslint files
+    4. create a method to read csv file
+    5. report
