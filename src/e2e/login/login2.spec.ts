@@ -15,7 +15,7 @@ async function loginAndThenVerify(username: string, password: string, msg: strin
     await expect(securePage.selectors.FLASH_ALERT).toHaveTextContaining(msg);
 }
 
-describe("Login Function", () => {
+describe("Login Function - 2", () => {
     const fileName = 'loginData.json';
     const loginData = shared.readJSONFile(fileName);
     let index = 0;

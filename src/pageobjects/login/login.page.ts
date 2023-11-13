@@ -29,8 +29,15 @@ class LoginPage extends Page {
     /**
      * overwrite specific options to adapt it to page object
      */
-    async open (): Promise<any> {
-        return await super.open('login');
+    async open (): Promise<void> {
+        await browser.maximizeWindow();
+        await browser.deleteAllCookies();
+        
+        await super.open('login');
+    }
+
+    async teardown(): Promise<void>{
+        await browser.closeWindow();
     }
 }
 
