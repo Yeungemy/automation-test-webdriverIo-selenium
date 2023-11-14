@@ -1,9 +1,4 @@
 import type { Options } from '@wdio/types'
-import * as dotenv from 'dotenv';
-
-// Load the .env file
-dotenv.config();
-
 export const config: Options.Testrunner = {
     //
     // ====================
@@ -14,7 +9,7 @@ export const config: Options.Testrunner = {
     autoCompileOpts: {
         autoCompile: true,
         tsNodeOpts: {
-            project: './tsconfig.json',
+            project: './src/tsconfig.json',
             transpileOnly: true
         }
     },
@@ -27,7 +22,7 @@ export const config: Options.Testrunner = {
     // of the configuration file being run.
     //
     // The specs are defined as an array of spec files (optionally using wildcards
-    // that will be expanded: i.e. "./src/e2e/**/**.spec.ts"). The test for each spec file will be run in a separate
+    // that will be expanded). The test for each spec file will be run in a separate
     // worker process. In order to have a group of spec files run in the same worker
     // process simply enclose them in an array within the specs array.
     //
@@ -36,7 +31,7 @@ export const config: Options.Testrunner = {
     // will be called from there.
     //
     specs: [
-        "./src/e2e/**/*.spec.ts"
+        './src/e2e/**/*.spec.ts'
     ],
     // Patterns to exclude.
     exclude: [
