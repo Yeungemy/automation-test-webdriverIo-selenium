@@ -33,27 +33,23 @@ describe("Login Failure", () => {
         index++;
     });
 
-    after(async () => {
-        await loginPage.teardown();
-    });
-
-    it("should be alerted with a proper message when logining with an incorrect username", async () => {
+    it("should be alerted when logining with an incorrect username", async () => {
         await loginAndThenVerify(username, password, securePage.strings.INVALID_USERNAME_ALERT);
     });
 
-    it("should be alerted with a proper message when logining with an incorrect password", async () => {
+    it("should be alerted when logining with an incorrect password", async () => {
         await loginAndThenVerify(username, password, securePage.strings.INVALID_PASSWORD_ALERT);
     });
 
-    it("should be alerted with a proper message when logining without a username", async () => {
+    it("should be alerted when logining without a username", async () => {
         await loginAndThenVerify(username, password, securePage.strings.INVALID_USERNAME_ALERT);
     });
 
-    it("should be alerted with a proper message when logining without a password", async () => {
+    it("should be alerted when logining without a password", async () => {
         await loginAndThenVerify(username, password, securePage.strings.INVALID_PASSWORD_ALERT);
     });
 
-    it("should be alerted with a proper message when logining without a password or username", async () => {
+    it("should be alerted when logining without entering a password or username", async () => {
         await loginAndThenVerify(username, password, securePage.strings.INVALID_USERNAME_ALERT);
     });
 });
