@@ -15,10 +15,10 @@ async function loginAndThenVerify(username: string, password: string, msg: strin
     await expect(securePage.selectors.FLASH_ALERT).toHaveTextContaining(msg);
 }
 
-describe("Login Function - 2", () => {
+describe("Login Failure", () => {
     const fileName = 'loginData.json';
     const loginData = shared.readJSONFile(fileName);
-    let index = 0;
+    let index = 1;
     let username: string;
     let password: string;
 
@@ -35,13 +35,6 @@ describe("Login Function - 2", () => {
 
     after(async () => {
         await loginPage.teardown();
-    });
-
-    it("Should be able to login with correct username and password and then logout", async () => {
-        await loginAndThenVerify(username, password, securePage.strings.SUCCESSFUL_LOGIN_ALERT);
-
-        await securePage.logout();
-        await expect(securePage.selectors.LOGOUT_BTN).not.toBeExisting();
     });
 
     it("should be alerted with a proper message when logining with an incorrect username", async () => {
