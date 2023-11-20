@@ -29,7 +29,10 @@ export const config: Options.Testrunner = {
     // If you are calling `wdio` from an NPM script (see https://docs.npmjs.com/cli/run-script),
     // then the current working directory is where your `package.json` resides, so `wdio`
     // will be called from there.
-    //
+    
+    suites: {
+        login: ['./src/e2e/login/loginFailure.spec.ts', './src/e2e/login/loginSuccess.spec.ts']
+    },
     specs: [
         './src/e2e/**/*.spec.ts'
     ],
@@ -132,7 +135,7 @@ export const config: Options.Testrunner = {
     // with `/`, the base url gets prepended, not including the path portion of your baseUrl.
     // If your `url` parameter starts without a scheme or `/` (like `some/path`), the base url
     // gets prepended directly.
-    baseUrl: 'http://localhost',
+    baseUrl: 'https://the-internet.herokuapp.com/',
     //
     // Default timeout for all waitFor* commands.
     waitforTimeout: 10000,

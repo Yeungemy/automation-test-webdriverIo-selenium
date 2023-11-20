@@ -1,6 +1,7 @@
 # WEBDRIVERIO-PROJECT
 
-## run the tests: npm run wdio
+## run tests by spec: npm run wdio
+## run by tests by suite: npm run wdio --suite login
 
 ## Frameworks and Languages
     1. nodejs
