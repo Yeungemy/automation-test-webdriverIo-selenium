@@ -20,7 +20,7 @@ class LoginPage extends Page {
      * a method to encapsule automation code to interact with the page
      * e.g. to login using username and password
      */
-    async login (username: string, password: string): Promise<void> {
+    async login (username: any = process.env.TEST_USERNAME, password: any = process.env.TEST_PASSWORD): Promise<void> {
         await this.selectors.USER_NAME_INPUT_FIELD.setValue(username);
         await this.selectors.PASSWORD_INPUT_FIELD.setValue(password);
         await this.selectors.SUBMIT_BTN.click();
@@ -29,11 +29,9 @@ class LoginPage extends Page {
     /**
      * overwrite specific options to adapt it to page object
      */
-    async open (): Promise<void> {
-        await browser.maximizeWindow();
-        await browser.deleteAllCookies();
-        
+    async launchApplication (username: any = process.env.TEST_USERNAME, password: any = process.env.TEST_PASSWORD): Promise<void> {
         await super.open('login');
+        await this.login(username, password);
     }
 
     async teardown(): Promise<void>{

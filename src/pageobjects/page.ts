@@ -10,6 +10,9 @@ export default class Page {
     * @param path path of the sub page (e.g. /path/to/page.html)
     */
     async open (path: string): Promise<void>  {
+        await browser.maximizeWindow();
+        await browser.deleteAllCookies();
+
         await browser.url(`${path}`)
     }
 }

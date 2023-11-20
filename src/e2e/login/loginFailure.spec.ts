@@ -10,7 +10,7 @@ import { shared } from '../../util/SharedUtil.js';
  * @param {string} msg - the message is provided after the login process
  */
 async function loginAndThenVerify(username: string, password: string, msg: string) {
-    await loginPage.login(username, password);
+    await loginPage.launchApplication(username, password);
     await expect(securePage.selectors.FLASH_ALERT).toBeExisting();
     await expect(securePage.selectors.FLASH_ALERT).toHaveTextContaining(msg);
 }
@@ -21,10 +21,6 @@ describe("Login Failure", () => {
     let index = 1;
     let username: string;
     let password: string;
-
-    before(async () => {
-        await loginPage.open();
-    });
 
     beforeEach(async () => {
         // define login username and password from the login data JSON file by index
