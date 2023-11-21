@@ -1,5 +1,6 @@
 import { $ } from '@wdio/globals'
 import Page from '../page.js';
+import { PAGES } from '../../../configs/e2eConstants.js';
 
 /**
  * login page containing specific selectors and methods
@@ -30,7 +31,7 @@ class LoginPage extends Page {
      * overwrite specific options to adapt it to page object
      */
     async launchApplication (username: any = process.env.TEST_USERNAME, password: any = process.env.TEST_PASSWORD): Promise<void> {
-        await super.open('login');
+        await super.open(PAGES.LOGIN);
         await this.login(username, password);
     }
 

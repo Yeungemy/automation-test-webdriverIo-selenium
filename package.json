@@ -1,5 +1,6 @@
 {
   "name": "webdriverio-project",
+  "main": "index.js",
   "type": "module",
   "devDependencies": {
     "@wdio/cli": "^8.22.1",
@@ -11,9 +12,10 @@
     "typescript": "^5.2.2"
   },
   "scripts": {
-    "wdio": "wdio run ./wdio.conf.ts"
+    "wdio": "wdio run ./configs/wdio.conf.ts"
   },
   "dependencies": {
+    "deepmerge": "^4.3.1",
     "selenium-webdriver": "^4.15.0"
   }
 }

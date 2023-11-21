@@ -2,14 +2,15 @@
   "compilerOptions": {
     "moduleResolution": "node",
     "module": "ESNext",
-    "target": "es2022",
-    "lib": ["es2022", "dom"],
+    "target": "es6",
+    "lib": ["es6", "dom"],
     "types": [
       "node",
       "@wdio/globals/types",
       "expect-webdriverio",
-      "@wdio/mocha-framework"
+      "@wdio/mocha-framework",
     ],
+    
     "skipLibCheck": true,
     "noEmit": true,
     "allowImportingTsExtensions": true,
@@ -20,6 +21,6 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["e2e", "wdio.conf.ts", "e2e"],
+  "include": ["e2e", "configs/wdio.conf.ts", "e2e"],
   "exclude": ["node_modules"]
 }

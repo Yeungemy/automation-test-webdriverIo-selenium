@@ -13,6 +13,6 @@ export default class Page {
         await browser.maximizeWindow();
         await browser.deleteAllCookies();
 
-        await browser.url(`${path}`)
+        await browser.url(`${path}`);
     }
 }
