@@ -5,26 +5,27 @@ dotenv.config();
 
 export const config: Options.Testrunner = {
     // ==================
-  // Specify Test Files
-  // ==================
-  suites: {
-    login: ['../src/e2e/login/loginFailure.spec.ts', '../src/e2e/login/loginSuccess.spec.ts']
-  },
+    // Specify Test Files
+    // ==================
+    suites: {
+        login: ['../src/e2e/login/loginFailure.spec.ts', '../src/e2e/login/loginSuccess.spec.ts']
+    },
 
-  specs: [
-    '../src/e2e/**/*.spec.ts'
-    // '../src/e2e/login/loginSuccess.spec.ts'
-  ],
+    specs: [
+        '../src/e2e/**/*.spec.ts'
+        // '../src/e2e/login/loginSuccess.spec.ts'
+    ],
 
-  // Patterns to exclude.
-  exclude: [
-    // 'path/to/excluded/files'
-  ],
+    // Patterns to exclude.
+    exclude: [
+        // 'path/to/excluded/files'
+    ],
 
     capabilities: [
         {
             browserName: process.env.BROWSER_NAME,
-            maxInstances: 5,
+            browserVersion: process.env.BROWSER_VERSION || 'ANY',
+            platformName: process.env.PLATFORM_NAME,
             'goog:chromeOptions': {
                 // to run chrome headless the following flags are required
                 // (see https://developers.google.com/web/updates/2017/04/headless-chrome)
@@ -54,14 +55,13 @@ export const config: Options.Testrunner = {
             // grid with only 5 firefox instance available you can make sure that not more than
             // 5 instance gets started at a time.
             browserName: 'firefox',
-            maxInstances: 5,
             specs: [
                 '../src/e2e/login/loginSuccess.spec.ts'
             ],
             'moz:firefoxOptions': {
                 // flag to activate Firefox headless mode (see https://github.com/mozilla/geckodriver/blob/master/README.md#firefox-capabilities for more details about moz:firefoxOptions)
                 args: [
-                    // '-headless',
+                    '-headless',
                     '-start-maximized',
                 ]
             },

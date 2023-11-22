@@ -28,7 +28,7 @@ exports.config = merge(config, {
   // ===================
   // Test Configurations
   // ===================
-  logLevel: 'silent',
+  logLevel: 'info',
   bail: 0,
   baseUrl: process.env.BASE_URL,
   // Default timeout for all waitFor* commands.
