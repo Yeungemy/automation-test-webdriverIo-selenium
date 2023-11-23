@@ -17,5 +17,5 @@
     4. Install Allure Reporter: npm install @wdio/allure-reporter --save-dev && npm     install -g allure-commandline --save-dev 
 
 
-## run tests by spec: npm run wdio
-## run by tests by suite: npm run wdio --suite login
+## run tests by spec: npm run test
+## run by tests by suite: npm run suite login
