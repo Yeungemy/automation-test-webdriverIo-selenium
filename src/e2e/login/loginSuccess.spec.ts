@@ -3,7 +3,7 @@ import { loginPage } from '../../pageobjects/login/login.page.js'
 import { securePage } from '../../pageobjects/login/secure.page.js'
 
 describe("Login and logout Successfully", () => {
-    it("Should be able to login with correct username and password and then logout", async function(){
+    it("@smoke @sanity Should be able to login with correct username and password and then logout", async function(){
         //apply retry
         //this.retries(2);
         await loginPage.launchApplication();

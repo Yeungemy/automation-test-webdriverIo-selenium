@@ -14,10 +14,12 @@
     "typescript": "^5.2.2"
   },
   "scripts": {
+    "pretest": "rimraf allure-results && rimraf allure-report && rimraf test-screenshots && rimraf wdio-logs",
     "e2e": "npx wdio run ./configs/wdio.conf.ts",
+    "sanity": "npm run test -- --mochaOpts.grep @sanity",
+    "smoke": "npm run test -- --mochaOpts.grep @smoke",
     "test": "npx wdio run ./configs/wdio.conf.ts --spec",
     "suite": "npx wdio run ./configs/wdio.conf.ts --suite",
-    "pretest": "rimraf allure-results && rimraf allure-report && rimraf test-screenshots && rimraf wdio-logs",
     "allure": "allure generate --clean allure-results && allure open"
   },
   "dependencies": {

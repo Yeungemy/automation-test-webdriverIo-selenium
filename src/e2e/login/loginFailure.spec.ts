@@ -29,7 +29,7 @@ describe("Login Failure", () => {
         index++;
     });
 
-    it("@smoke should be alerted when logining with an incorrect username", async () => {
+    it("@smoke @sanity should be alerted when logining with an incorrect username", async () => {
         await loginAndThenVerify(username, password, securePage.strings.INVALID_USERNAME_ALERT);
     });
 
