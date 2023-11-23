@@ -18,6 +18,7 @@
     "e2e": "npx wdio run ./configs/wdio.conf.ts",
     "sanity": "npm run test -- --mochaOpts.grep @sanity",
     "smoke": "npm run test -- --mochaOpts.grep @smoke",
+    "snapshot": "npm run test -- --mochaOpts.grep @snapshot",
     "test": "npx wdio run ./configs/wdio.conf.ts --spec",
     "suite": "npx wdio run ./configs/wdio.conf.ts --suite",
     "allure": "allure generate --clean allure-results && allure open"
