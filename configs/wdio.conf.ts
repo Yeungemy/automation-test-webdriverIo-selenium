@@ -31,7 +31,7 @@ export const config: Options.Testrunner = {
                 // (see https://developers.google.com/web/updates/2017/04/headless-chrome)
                 // Log: INFO = 0, WARNING = 1, LOG_ERROR = 2, LOG_FATAL = 3
                 args: [
-                    '--headless',
+                    //'--headless',
                     '--disable-gpu',
                     '--disable-notifications',
                     '--disable-infobars',
@@ -80,6 +80,11 @@ export const config: Options.Testrunner = {
     // If your `url` parameter starts without a scheme or `/` (like `some/path`), the base url
     // gets prepended directly.
     baseUrl: process.env.BASE_URL,
+
+    reporters: [['allure', {
+        outputDir: 'allure-results',
+        disableWebdriverScreenshotsReporting: false,
+      }]],
 
     //
     // =====
@@ -175,8 +180,11 @@ export const config: Options.Testrunner = {
      * @param {boolean} result.passed    true if test has passed, otherwise false
      * @param {object}  result.retries   information about spec related retries, e.g. `{ attempts: 0, limit: 0 }`
      */
-    // afterTest: function(test, context, { error, result, duration, passed, retries }) {
-    // },
+    afterTest: async function(test, context, { error, result, duration, passed, retries }) {
+        if (error) {
+            await browser.takeScreenshot();
+        }
+    }
 
 
     /**

@@ -40,9 +40,8 @@ exports.config = merge(config, {
 
   // Default request retries count
   connectionRetryCount: Number(process.env.CONNECTION_RETRY_COUNT),
-  
+
   framework: 'mocha',
-  reporters: ['spec'],
   mochaOpts: {
     ui: 'bdd',
     timeout: 60 * 1000,
