@@ -9,7 +9,7 @@ class SecurePage extends Page {
     /**
      * define selectors using getter methods
      */
-    get selectors() {
+    get selectors(): any {
         return {
             FLASH_ALERT: $('#flash'),
             LOGOUT_BTN: $('a.button')
