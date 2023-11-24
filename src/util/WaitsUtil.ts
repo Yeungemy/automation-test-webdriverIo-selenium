@@ -1,5 +1,21 @@
 class WaitsUtil {
     /**
+     * Wait for the element to be displayed
+     */
+    async waitForIsShown(ele: WebdriverIO.Element, isShown = true): Promise<boolean> {
+        try{
+            const result = await $(ele).waitForDisplayed({
+                timeout: Number(process.env.WAIT_FOR_TIME_OUT),
+                reverse: !isShown
+            });
+
+            return !!result;
+        } catch (e) {
+            return !isShown;
+        }
+    }
+
+    /**
      * Wait for clickable element
      * @param {WebdriverIO.Element} elm - the element selector 
      * @param {number} waitTime - the waiting time
@@ -25,20 +41,6 @@ class WaitsUtil {
      */
     async waitUntilEnabled(elm: WebdriverIO.Element, waitTime: number = 60000): Promise<void> {
         await elm.waitForEnabled({timeout: waitTime});
-    }
-
-    /**
-     * Wait for text presented in the field
-     * @param {WebdriverIO.Element} elm - the element selector 
-     * @param {number} waitTime - the waiting time
-     */
-    async waitUntilTextPresented(elm: WebdriverIO.Element, context: string, waitTime: number = 60000, alertMsg: string = 'expected text is not prented'): Promise<any> {
-        await browser.waitUntil(async() =>{
-            return (await elm.getText()) === context
-          }, {
-            timeout: waitTime,
-            timeoutMsg: alertMsg
-          });
     }
 }
 

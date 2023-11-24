@@ -2,6 +2,7 @@ import { $ } from '@wdio/globals'
 import Page from '../page.js';
 import { PAGES } from '../../../configs/e2eConstants.js';
 import { waits } from '../../util/WaitsUtil.js';
+import { actions } from '../../util/ActionsUtil.js';
 
 /**
  * login page containing specific selectors and methods
@@ -23,8 +24,8 @@ class LoginPage extends Page {
      * e.g. to login using username and password
      */
     async login (username: any = process.env.TEST_USERNAME, password: any = process.env.TEST_PASSWORD): Promise<void> {
-        await this.selectors.USER_NAME_INPUT_FIELD.setValue(username);
-        await this.selectors.PASSWORD_INPUT_FIELD.setValue(password);
+        await actions.fillInputField(this.selectors.USER_NAME_INPUT_FIELD, username);
+        await actions.fillInputField(this.selectors.PASSWORD_INPUT_FIELD, password);
         await waits.waitAndClick(this.selectors.SUBMIT_BTN);
     }
 

@@ -5,21 +5,6 @@ import { browser } from '@wdio/globals'
 * that is shared across all page objects
 */
 export default class Page {
-    /**
-     * Wait for the element to be displayed
-     */
-    async waitForIsShown(ele: WebdriverIO.Element, isShown = true): Promise<boolean> {
-        try{
-            const result = await $(ele).waitForDisplayed({
-                timeout: Number(process.env.WAIT_FOR_TIME_OUT),
-                reverse: !isShown
-            });
-
-            return !!result;
-        } catch (e) {
-            return !isShown;
-        }
-    }
 
     /**
      * Give back if the element is displayed
