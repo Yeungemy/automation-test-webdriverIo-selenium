@@ -6,7 +6,7 @@ describe("Add and Remove", () => {
         await addRemoveElement.open(PAGES.ADD_REMOVE_ELEMENT);
         await addRemoveElement.addElement();
         await addRemoveElement.deleteElement();
+        await addRemoveElement.isDisplayed(addRemoveElement.selectors.ADD_BTN);
         await expect(addRemoveElement.selectors.DELETE_BTN).not.toBePresent();
-        await expect(addRemoveElement.selectors.ADD_BTN).toBeDisplayed();
     });
 });

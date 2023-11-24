@@ -5,7 +5,8 @@
     2. WebDriverIO
     3. Typescript
     4. Selenium
-    5. Mocha
+    5. Mocha,
+    6. Chancejs: npm i --save-dev @types/chance
 
 ## TODO list
     4. create a method to read csv file
