@@ -1,5 +1,6 @@
 export const PAGES = {
-    LOGIN: 'login'
+    LOGIN: 'login',
+    ADD_REMOVE_ELEMENT: 'add_remove_elements/'
 };
 
 export const BROWSER_NAMES = {

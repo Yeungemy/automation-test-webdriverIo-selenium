@@ -12,8 +12,8 @@ export const config: Options.Testrunner = {
     },
 
     specs: [
-        '../src/e2e/**/*.spec.ts'
-        // '../src/e2e/login/loginSuccess.spec.ts'
+        // '../src/e2e/**/*.spec.ts'
+        '../src/e2e/addRemove/addRemove.spec.ts'
     ],
 
     // Patterns to exclude.
@@ -50,30 +50,30 @@ export const config: Options.Testrunner = {
             // }
         },
 
-        {
-            // maxInstances can get overwritten per capability. So if you have an in house Selenium
-            // grid with only 5 firefox instance available you can make sure that not more than
-            // 5 instance gets started at a time.
-            browserName: 'firefox',
-            specs: [
-                '../src/e2e/login/loginSuccess.spec.ts'
-            ],
-            'moz:firefoxOptions': {
-                // flag to activate Firefox headless mode (see https://github.com/mozilla/geckodriver/blob/master/README.md#firefox-capabilities for more details about moz:firefoxOptions)
-                args: [
-                    '-headless',
-                    '-start-maximized',
-                ]
-            },
+        // {
+        //     // maxInstances can get overwritten per capability. So if you have an in house Selenium
+        //     // grid with only 5 firefox instance available you can make sure that not more than
+        //     // 5 instance gets started at a time.
+        //     browserName: 'firefox',
+        //     specs: [
+        //         '../src/e2e/login/loginSuccess.spec.ts'
+        //     ],
+        //     'moz:firefoxOptions': {
+        //         // flag to activate Firefox headless mode (see https://github.com/mozilla/geckodriver/blob/master/README.md#firefox-capabilities for more details about moz:firefoxOptions)
+        //         args: [
+        //             '-headless',
+        //             '-start-maximized',
+        //         ]
+        //     },
 
-            // If outputDir is provided WebdriverIO can capture driver session logs
-            // it is possible to configure which logTypes to exclude.
-            // excludeDriverLogs: ['*'], // pass '*' to exclude all driver session logs
-            excludeDriverLogs: ['bugreport', 'server'],
+        //     // If outputDir is provided WebdriverIO can capture driver session logs
+        //     // it is possible to configure which logTypes to exclude.
+        //     // excludeDriverLogs: ['*'], // pass '*' to exclude all driver session logs
+        //     excludeDriverLogs: ['bugreport', 'server'],
 
-            // Parameter to ignore some or all Puppeteer default arguments
-            // ignoreDefaultArgs: ['-foreground'], // set value to true to ignore all default arguments
-        }
+        //     // Parameter to ignore some or all Puppeteer default arguments
+        //     // ignoreDefaultArgs: ['-foreground'], // set value to true to ignore all default arguments
+        // }
     ],
     // Set a base URL in order to shorten url command calls. If your `url` parameter starts
     // with `/`, the base url gets prepended, not including the path portion of your baseUrl.
@@ -180,7 +180,7 @@ export const config: Options.Testrunner = {
      * @param {boolean} result.passed    true if test has passed, otherwise false
      * @param {object}  result.retries   information about spec related retries, e.g. `{ attempts: 0, limit: 0 }`
      */
-    afterTest: async function(test, context, { error, result, duration, passed, retries }) {
+    afterTest: async function({ error}) {
         if (error) {
             await browser.takeScreenshot();
         }

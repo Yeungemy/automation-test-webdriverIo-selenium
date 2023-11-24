@@ -1,6 +1,5 @@
 {
   "name": "webdriverio-project",
-  "main": "index.js",
   "type": "module",
   "devDependencies": {
     "@wdio/allure-reporter": "^8.24.0",
