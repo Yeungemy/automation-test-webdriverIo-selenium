@@ -32,7 +32,7 @@ export const config: Options.Testrunner = {
                 // (see https://developers.google.com/web/updates/2017/04/headless-chrome)
                 // Log: INFO = 0, WARNING = 1, LOG_ERROR = 2, LOG_FATAL = 3
                 args: [
-                    //'--headless',
+                    // '--headless',
                     '--disable-gpu',
                     '--disable-notifications',
                     '--disable-infobars',

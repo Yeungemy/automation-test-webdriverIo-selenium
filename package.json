@@ -21,7 +21,8 @@
     "snapshot": "npm run test -- --mochaOpts.grep @snapshot",
     "test": "npx wdio run ./configs/wdio.conf.ts --spec",
     "suite": "npx wdio run ./configs/wdio.conf.ts --suite",
-    "allure": "allure generate --clean allure-results && allure open"
+    "allure": "allure generate --clean allure-results && allure open",
+    "jenkins": "java -jar jenkins.war --httpPort=9090"
   },
   "dependencies": {
     "chance": "^1.1.11",

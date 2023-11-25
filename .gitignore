@@ -5,3 +5,4 @@ package-lock.json
 yarn.lock
 .vscode/launch.json
 configs/wdio.conf.ts
+jenkins.war
