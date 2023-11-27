@@ -26,7 +26,6 @@ export const config: Options.Testrunner = {
         {
             browserName: process.env.BROWSER_NAME,
             browserVersion: process.env.BROWSER_VERSION || 'ANY',
-            platformName: process.env.PLATFORM_NAME,
             'goog:chromeOptions': {
                 // to run chrome headless the following flags are required
                 // (see https://developers.google.com/web/updates/2017/04/headless-chrome)

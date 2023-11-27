@@ -15,7 +15,7 @@
     1. Install Git
     2. Install Node/NPM
     3. Install an IDE
-    4. Install Allure Reporter: npm install @wdio/allure-reporter --save-dev && npm     install -g allure-commandline --save-dev 
+    4. Install Allure Reporter: npm install @wdio/allure-reporter --save-dev && npm install -g allure-commandline --save-dev 
 
 
 ## run tests by spec: npm run test
